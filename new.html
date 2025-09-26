@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura - Unify Your Smart Home</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #6a5acd; /* SlateBlue */
+            --secondary-color: #f0e6ff; /* Light Lavender */
+            --dark-color: #2c3e50; /* Slate Gray */
+            --light-color: #ffffff;
+            --text-muted: #8492a6;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .navbar .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .navbar .btn-primary:hover {
+            background-color: #5849b6;
+            border-color: #5849b6;
+            transform: translateY(-2px);
+        }
+        
+        /* --- Hero Section --- */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--light-color) 0%, var(--secondary-color) 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-weight: 800;
+            font-size: 3.5rem;
+            color: var(--dark-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 1.5rem auto;
+        }
+
+        .hero .btn {
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .hero .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .hero .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .hero-image {
+            margin-top: 4rem;
+            max-width: 100%;
+            width: 450px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+
+        /* --- Sections General --- */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+        }
+
+        /* --- Features Section --- */
+        .feature-card {
+            background: var(--light-color);
+            border: none;
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -2px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        /* --- Testimonials Section --- */
+        #testimonials {
+            background-color: var(--secondary-color);
+        }
+        
+        .testimonial-card {
+            background-color: var(--light-color);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--dark-color);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+        
+        .testimonial-author h5 {
+            margin: 0;
+            font-weight: 700;
+        }
+        
+        .testimonial-author span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            background: var(--primary-color);
+            color: var(--light-color);
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-weight: 800;
+            font-size: 2.5rem;
+        }
+
+        .cta-section .btn {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            font-weight: 700;
+            padding: 12px 35px;
+            border-radius: 50px;
+            margin-top: 1.5rem;
+        }
+
+        .cta-section .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 40px 0;
+            background-color: var(--dark-color);
+            color: #adb5bd;
+        }
+        
+        footer a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--light-color);
+        }
+        
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">Aura</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#routine-generator">Routine Generator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#cta">Pricing</a>
+                    </li>
+                </ul>
+                <a href="#cta" class="btn btn-primary rounded-pill ms-lg-3">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-4">Your entire home, in perfect harmony.</h1>
+                    <p class="lead">Aura is the simple, elegant hub that unifies all your smart devices. Control your lights, thermostat, security, and more from a single, intuitive app.</p>
+                    <a href="#cta" class="btn btn-primary btn-lg rounded-pill">Buy Now</a>
+                    <a href="#features" class="btn btn-outline-dark btn-lg rounded-pill ms-2">Learn More</a>
+                </div>
+            </div>
+            <img src="https://placehold.co/800x600/6a5acd/FFFFFF?text=Aura+Hub" alt="Aura Smart Home Hub" class="img-fluid hero-image" 
+            onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/FFFFFF?text=Image+Not+Found';">
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">Everything you need. Nothing you don't.</h2>
+            <p class="section-subtitle">Aura is packed with features designed to simplify your life and give you peace of mind.</p>
+            <div class="row g-4">
+                <!-- Feature 1 -->
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/></svg>
+                        </div>
+                        <h3>Universal Control</h3>
+                        <p class="text-muted">Connects seamlessly with over 1,000 smart devices. From Philips Hue to Google Nest, Aura brings them all together.</p>
+                    </div>
+                </div>
+                <!-- Feature 2 -->
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16"><path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707a.5.5 0 0 0 0-.707ZM7.293 4L8 3.293a.5.5 0 1 0-.707-.707L6.586 3.586a.5.5 0 0 0 0 .707.5.5 0 0 0 .707 0ZM11.5 4.5a.5.5 0 1 0 0-1h-3a.5.5 0 1 0 0 1h3Zm-1 8a.5.5 0 1 0 0-1h-3a.5.5 0 1 0 0 1h3ZM3 9.5a.5.5 0 1 0-1 0v3a.5.5 0 1 0 1 0v-3ZM4.5 8.5a.5.5 0 1 0 0-1h-3a.5.5 0 1 0 0 1h3ZM15 6.5a.5.5 0 1 0 0-1h-3a.5.5 0 1 0 0 1h3Zm-1.879 3.621a.5.5 0 1 0-.707-.707L11 10.793a.5.5 0 1 0 .707.707l1.414-1.414ZM1.879 5.621a.5.5 0 1 0-.707.707L2.586 7.743a.5.5 0 1 0 .707-.707L1.879 5.621Z"/></svg>
+                        </div>
+                        <h3>Smart Automations</h3>
+                        <p class="text-muted">Create powerful routines. "Movie Night" can dim the lights, lower the blinds, and turn on your TV with a single tap.</p>
+                    </div>
+                </div>
+                <!-- Feature 3 -->
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shield-lock-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0c-.08 0-.16.01-.237.022a1.54 1.54 0 0 0-.842.45L4.16 3.083a4.413 4.413 0 0 0 -1.03-.442A4.502 4.502 0 0 0 1.5 2.5c-.828 0-1.5.672-1.5 1.5v7c0 .828.672 1.5 1.5 1.5h13c.828 0 1.5-.672 1.5-1.5v-7c0-.828-.672-1.5-1.5-1.5a4.502 4.502 0 0 0-1.63-.959c-.383-.04-.752-.17-1.03-.442L10.079.472a1.54 1.54 0 0 0-.842-.45A1.63 1.63 0 0 0 8 0zm0 5a.5.5 0 0 1 .5.5v1.5a.5.5 0 0 1-1 0V5.5A.5.5 0 0 1 8 5zm.5 3.5a.5.5 0 0 0-1 0V12a.5.5 0 0 0 1 0V8.5z"/><path d="M9 8.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5zM11.5 11a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-.5-.5z"/></svg>
+                        </div>
+                        <h3>Privacy First</h3>
+                        <p class="text-muted">Your data is yours. Aura processes everything locally, ensuring your home's information stays private and secure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Routine Generator Section -->
+    <section class="section bg-light" id="routine-generator">
+        <div class="container">
+            <h2 class="section-title">Design Your Perfect Day</h2>
+            <p class="section-subtitle">Tell us about your devices and let our AI assistant craft a custom Aura routine, showing you what's possible in your smart home.</p>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card p-4 p-md-5 shadow-sm border-0 rounded-3">
+                        <div class="mb-3">
+                            <label for="devicesInput" class="form-label fw-bold">What smart devices do you own?</label>
+                            <input type="text" class="form-control" id="devicesInput" placeholder="e.g., Philips Hue lights, Nest thermostat, Sonos speaker">
+                        </div>
+                        <div class="mb-3">
+                            <label for="scenarioInput" class="form-label fw-bold">What's the scenario?</label>
+                            <input type="text" class="form-control" id="scenarioInput" placeholder="e.g., Waking up on a weekday, hosting a party, leaving for work">
+                        </div>
+                        <button id="generateRoutineBtn" class="btn btn-primary btn-lg rounded-pill w-100 mt-3">✨ Generate My Aura Routine</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8">
+                    <div id="routineResult" class="d-none">
+                        <!-- Loading spinner -->
+                        <div id="loadingSpinner" class="text-center mb-4">
+                            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mt-2 text-muted">Crafting your personalized routine...</p>
+                        </div>
+                        <!-- Result content will be injected here -->
+                        <div id="routineContent" class="feature-card text-start"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Loved by smart homes everywhere.</h2>
+             <p class="section-subtitle">Don't just take our word for it. Here's what our customers are saying about how Aura has transformed their homes.</p>
+            <div class="row g-4">
+                <!-- Testimonial 1 -->
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p>"I've tried other hubs, but Aura is in a league of its own. The setup was shockingly easy, and for the first time, all my gadgets are actually talking to each other. It's magic."</p>
+                        <div class="testimonial-author">
+                             <img src="https://placehold.co/100x100/f0e6ff/2c3e50?text=JS" alt="Author Jane Smith">
+                            <div>
+                                <h5>Jane S.</h5>
+                                <span>Verified Customer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p>"The 'Away' automation is a game-changer. Knowing my doors are locked, lights are off, and thermostat is adjusted with one tap gives me incredible peace of mind."</p>
+                        <div class="testimonial-author">
+                            <img src="https://placehold.co/100x100/f0e6ff/2c3e50?text=MD" alt="Author Mike Davis">
+                            <div>
+                                <h5>Mike D.</h5>
+                                <span>Verified Customer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p>"Sleek design and powerful performance. It looks great on my shelf and the app is beautifully designed and incredibly responsive. 10/10 would recommend."</p>
+                        <div class="testimonial-author">
+                            <img src="https://placehold.co/100x100/f0e6ff/2c3e50?text=SC" alt="Author Sarah Chen">
+                            <div>
+                                <h5>Sarah C.</h5>
+                                <span>Verified Customer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Final CTA Section -->
+    <section id="cta">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Ready to unify your smart home?</h2>
+                <p>Get your Aura Hub today and experience a truly connected home.</p>
+                <a href="#" class="btn btn-light btn-lg">Order Now for $149</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2025 Aura Inc. All rights reserved.</p>
+            <p>
+                <a href="#" class="mx-2">Privacy Policy</a> |
+                <a href="#" class="mx-2">Terms of Service</a> |
+                <a href="#" class="mx-2">Contact Us</a>
+            p>
+        </div>
+    </footer>
+
+    <!-- Custom Alert Modal -->
+    <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-3">
+          <div class="modal-header border-bottom-0">
+            <h5 class="modal-title" id="alertModalLabel">Missing Information</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body py-4" id="alertModalBody">
+            <!-- Alert message will be injected here -->
+          </div>
+          <div class="modal-footer border-top-0">
+            <button type="button" class="btn btn-primary rounded-pill px-4" data-bs-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap & jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        $(document).ready(function(){
+          // --- Smooth Scrolling ---
+          $("a.nav-link, a.btn").on('click', function(event) {
+            if (this.hash !== "") {
+              event.preventDefault();
+              var hash = this.hash;
+              $('html, body').animate({
+                scrollTop: $(hash).offset().top - 70 // Adjust for fixed navbar height
+              }, 600);
+            }
+          });
+
+          // --- Gemini API Logic for Routine Generator ---
+          const generateBtn = document.getElementById('generateRoutineBtn');
+          const devicesInput = document.getElementById('devicesInput');
+          const scenarioInput = document.getElementById('scenarioInput');
+          const routineResultContainer = document.getElementById('routineResult');
+          const routineContent = document.getElementById('routineContent');
+          const loadingSpinner = document.getElementById('loadingSpinner');
+          const alertModalEl = document.getElementById('alertModal');
+          const alertModal = new bootstrap.Modal(alertModalEl);
+
+          generateBtn.addEventListener('click', async () => {
+              const devices = devicesInput.value.trim();
+              const scenario = scenarioInput.value.trim();
+
+              if (!devices || !scenario) {
+                  document.getElementById('alertModalBody').textContent = 'Please fill in both fields to generate a routine.';
+                  alertModal.show();
+                  return;
+              }
+
+              // Show loading state
+              routineResultContainer.classList.remove('d-none');
+              loadingSpinner.style.display = 'block';
+              routineContent.innerHTML = '';
+              
+              const apiKey = ""; // This will be provided by the runtime environment.
+              const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+              
+              const systemPrompt = "You are 'Aura', an intelligent and elegant smart home assistant. Your goal is to create sophisticated and helpful automation routines. Given a user's list of devices and a scenario, you will create a named routine with a short, inspiring description, followed by a series of specific actions. Format your response in simple HTML. The routine title should be in an <h4> tag with the class 'fw-bold mb-3'. The description should be in a <p> tag. The actions should be in an unordered list (<ul>) with each action as an <li>. Make the routine sound seamless and magical.";
+              
+              const userQuery = `My smart devices: ${devices}. My scenario: ${scenario}.`;
+
+              try {
+                  const payload = {
+                      contents: [{ parts: [{ text: userQuery }] }],
+                      systemInstruction: {
+                          parts: [{ text: systemPrompt }]
+                      },
+                  };
+
+                  const response = await fetch(apiUrl, {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(payload)
+                  });
+
+                  if (!response.ok) {
+                      throw new Error(`API error: ${response.statusText}`);
+                  }
+
+                  const result = await response.json();
+                  const candidate = result.candidates?.[0];
+
+                  if (candidate && candidate.content?.parts?.[0]?.text) {
+                      const generatedText = candidate.content.parts[0].text;
+                      routineContent.innerHTML = generatedText;
+                  } else {
+                      routineContent.innerHTML = '<p class="text-danger">Sorry, I couldn\'t generate a routine right now. Please try again.</p>';
+                      console.error('Unexpected API response structure:', result);
+                  }
+
+              } catch (error) {
+                  console.error('Error calling Gemini API:', error);
+                  routineContent.innerHTML = `<p class="text-danger">An error occurred. Please check the console for details and try again later.</p>`;
+              } finally {
+                  // Hide loading spinner
+                  loadingSpinner.style.display = 'none';
+              }
+          });
+        });
+    </script>
+</body>
+</html>
+
